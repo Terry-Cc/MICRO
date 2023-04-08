@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.micro</groupId>
+    <artifactId>www</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common</module>
+        <module>customer</module>
+        <module>services</module>
+        <module>gateway</module>
+        <module>xxljob</module>
+        <module>jfxexe</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-core.version>5.3.15</spring-core.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <common.version>1.0-SNAPSHOT</common.version>
+        <services-api.version>1.0-SNAPSHOT</services-api.version>
+        <yaml.version>1.26</yaml.version>
+        <swagger.version>2.5.0</swagger.version>
+        <hutool.version>5.7.1</hutool.version>
+        <log4j.version>2.8.2</log4j.version>
+        <swagger2.version>2.8.0</swagger2.version>
+        <junit.version>4.12</junit.version>
+        <lombook.version>RELEASE</lombook.version>
+        <aspectj.version>1.9.6</aspectj.version>
+        <alibaba.cloud.version>2.2.6.RELEASE</alibaba.cloud.version>
+        <actuator.version>2.6.1</actuator.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <jackson.version>2.13.0</jackson.version>
+        <xxl.job.version>2.0.1</xxl.job.version>
+        <gateway.version>2.2.6.RELEASE</gateway.version>
+        <gateway.adapter.version>1.8.3</gateway.adapter.version>
+        <webflux.version>2.6.3</webflux.version>
+        <alibaba.fastjson.version>1.2.70</alibaba.fastjson.version>
+        <hikari.version>3.4.5</hikari.version>
+        <pgp.version>1.60</pgp.version>
+        <mysql.version>8.0.21</mysql.version>
+        <mybatis.version>2.2.1</mybatis.version>
+        <druid.version>1.2.10</druid.version>
+        <javafx.version>2.1.6</javafx.version>
+        <javafx.test.version>1.3.0</javafx.test.version>
+        <javafx.pkg.version>8.8.3</javafx.pkg.version>
+        <ikanalyzer.version>2012_u6</ikanalyzer.version>
+        <jnanoid.version>2.0.0</jnanoid.version>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- webflux依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${webflux.version}</version>
+            </dependency>
+            <!-- gateway-adapter依赖 -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${gateway.adapter.version}</version>
+            </dependency>
+            <!-- gateway依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${gateway.version}</version>
+            </dependency>
+            <!-- junit依赖 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- swagger2依赖 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <!-- swagger2ui依赖 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombook.version}</version>
+            </dependency>
+            <!-- log4j2 -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+                <type>pom</type>
+            </dependency>
+            <!-- spring starter web -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- aspectj -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.micro</groupId>
+                <artifactId>common</artifactId>
+                <version>${common.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- spring autoconfigure -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- yaml -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${yaml.version}</version>
+            </dependency>
+            <!-- services-api -->
+            <dependency>
+                <groupId>com.micro</groupId>
+                <artifactId>services-api</artifactId>
+                <version>${services-api.version}</version>
+            </dependency>
+            <!--com.alibaba.cloud为毕业版本,org.springframework.cloud为孵化版本-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-dubbo</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${actuator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- 解决构建失败问题 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- xxl-job -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl.job.version}</version>
+            </dependency>
+            <!-- cloud-alibaba 2.2.6 重要 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- cloud Hoxton.SR9 重要 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- boot 2.3.2.RELEASE 重要 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba.fastjson.version}</version>
+            </dependency>
+            <!-- PGP -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpg-jdk15on</artifactId>
+                <version>${pgp.version}</version>
+            </dependency>
+            <!-- PGP -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>${pgp.version}</version>
+            </dependency>
+            <!-- PGP -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${pgp.version}</version>
+            </dependency>
+            <!-- 解决Base64报错 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.15</version>
+            </dependency>
+            <!-- csv操作 -->
+            <dependency>
+                <groupId>net.sourceforge.javacsv</groupId>
+                <artifactId>javacsv</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <!-- HikariCP -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikari.version}</version>
+                <type>bundle</type>
+            </dependency>
+            <!-- MySql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- javafx -->
+            <dependency>
+                <groupId>de.roskenet</groupId>
+                <artifactId>springboot-javafx-support</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <!-- javafx test -->
+            <dependency>
+                <groupId>de.roskenet</groupId>
+                <artifactId>springboot-javafx-test</artifactId>
+                <version>${javafx.test.version}</version>
+            </dependency>
+            <!-- javafx maven pkg -->
+            <dependency>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.pkg.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.janeluo</groupId>
+                <artifactId>ikanalyzer</artifactId>
+                <version>${ikanalyzer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aventrix.jnanoid</groupId>
+                <artifactId>jnanoid</artifactId>
+                <version>${jnanoid.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

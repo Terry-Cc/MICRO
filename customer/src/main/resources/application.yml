@@ -1,0 +1,45 @@
+server:
+  port: 10002
+#  ssl:
+#    key-store: classpath:keystore.p12
+#    key-store-type: PKCS12
+#    key-alias: terryc
+#    enabled: true
+#    key-store-password: 123456
+  servlet:
+    context-path: /micro/cust
+spring:
+  application:
+    name: service-dubbo-customer
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: localhost:8888
+        username: nacos
+        password: nacos
+  # profiles:
+    # active: dev
+dubbo:
+  registry:
+    # 其中子属性 address 的值 "spring-cloud://localhost"，说明挂载到 Spring Cloud 注册中心 这里使用 nacos 注册地址
+    address: spring-cloud://localhost:8888
+  application:
+    # qos=Quality of Service 是 Dubbo 的在线运维命令，可以对服务进行动态的配置、控制(上下线)及查询
+    qos-enable: false
+  # 注册的端口配置
+  protocol:
+    # 协议名称
+    name: dubbo
+    # 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: 20901
+#  dubbo 注册扫描包路径
+#  scan:
+#    base-packages: com.micro.www.service
+  cloud:
+    # 需要订阅的服务名
+    subscribed-services: service-dubbo-provider
+#logging:
+#  level:
+#    root: debug

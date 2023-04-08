@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.FlowPane?>
+
+<FlowPane fx:id="menuView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.micro.jfxexe.controller.view.MenuViewController">
+    <children>
+        <MenuBar fx:id="menuView_MenuBar" prefHeight="25.0" prefWidth="1000.0">
+            <menus>
+                <Menu fx:id="menuView_MenuBar_HomePage" mnemonicParsing="false" text="HomePage" />
+                <Menu fx:id="menuView_MenuBar_Search" mnemonicParsing="false" text="Search" />
+                <Menu fx:id="menuView_MenuBar_Increased" mnemonicParsing="false" text="Increased" />
+                <Menu fx:id="menuView_MenuBar_File" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuView_MenuBar_File_Open" mnemonicParsing="false" text="Open" />
+                    </items>
+                </Menu>
+                <Menu fx:id="menuView_MenuBar_Edit" mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem fx:id="menuView_MenuBar_Edit_FrontSize" mnemonicParsing="false" text="FrontSize" />
+                    </items>
+                </Menu>
+                <Menu fx:id="menuView_MenuBar_Help" mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="menuView_MenuBar_Help_About" mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </children>
+</FlowPane>

@@ -1,0 +1,57 @@
+server:
+  port: 10003
+#  ssl:
+#    https 配置密钥
+#    key-store: classpath:keystore.p12
+#    key-store-type: PKCS12
+#    key-alias: terryc
+#    enabled: true
+#    key-store-password: 123456
+  servlet:
+    context-path: /micro/serv
+spring:
+  application:
+    # 服务名
+    name: service-dubbo-provider
+  cloud:
+    nacos:
+      discovery:
+        # 服务发现 开启
+        enabled: true
+        # 服务注册 开启
+        register-enabled: true
+        # 注册地址
+        server-addr: localhost:8888
+        # NACOS登录用户名
+        username: nacos
+        # 密码
+        password: nacos
+  # profiles:
+    # 配置文件环境选择
+    # active: dev
+dubbo:
+  registry:
+    # 其中子属性 address 的值 "spring-cloud://localhost"，说明挂载到 Spring Cloud 注册中心 这里使用 nacos 注册地址
+    address: spring-cloud://localhost:8888
+  application:
+    # qos=Quality of Service 是 Dubbo 的在线运维命令，可以对服务进行动态的配置、控制(上下线)及查询
+    qos-enable: false
+  protocol:
+    # 协议名称
+    name: dubbo
+    # 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: 20900
+  scan:
+    # dubbo 扫描包
+    base-packages: com.micro.www.service
+  cloud:
+    # 需要订阅的服务名
+    subscribed-services: /
+  provider:
+    # 禁用dubbo使用rpc异常过滤器处理自定义异常
+    # 实际异常处理还可以直接修改规则 com.alibaba.dubbo.rpc.filter.ExceptionFilter
+    # 这里我们直接暴力方法, 直接不处理异常, 直接返回消费端统一处理
+    filter: -exception
+#logging:
+#  level:
+#    root: debug

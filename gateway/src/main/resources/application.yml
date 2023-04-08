@@ -1,0 +1,42 @@
+server:
+  port: 10100
+  ssl:
+    # 网关配置 ssl
+    key-store: classpath:keystore.p12
+    key-store-type: PKCS12
+    key-alias: terryc
+    enabled: true
+    key-store-password: 123456
+#  由于网关路由匹配的特殊性, 请求前缀暂时不能这样简单设置
+#  servlet:
+#    context-path: /micro
+spring:
+  application:
+    name: micro-gateway
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8888
+        username: nacos
+        password: nacos
+    # gateway 网关配置
+    gateway:
+      discovery:
+        locator:
+          # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+          enabled: true
+      routes:
+          # 自定义路由ID
+        - id: customer-route
+          # 路由转发地址 lb 从nacos根据服务名拉取服务
+          uri: lb://service-dubbo-customer
+          # uri: http://10.138.93.31:10002
+          # 路由匹配规则
+          predicates:
+              # 路径匹配
+            - Path=/micro/cust/**
+  profiles:
+    active: dev
+
+# keytool -genkey -alias terryc -keyalg RSA -keystore keystore.p12 -ext SAN=dns:www.micro.com,ip:10.138.93.31
