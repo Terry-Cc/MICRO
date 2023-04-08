@@ -17,6 +17,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="MICRO" target="1.8" />
       <module name="servicer" target="1.7" />
     </bytecodeTargetLevel>
   </component>
