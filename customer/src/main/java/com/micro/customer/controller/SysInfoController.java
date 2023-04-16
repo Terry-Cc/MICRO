@@ -1,6 +1,7 @@
 package com.micro.customer.controller;
 
 import com.micro.common.anno.ApiHandleAll;
+import com.micro.common.anno.ApiLogHandler;
 import com.micro.common.web.vo.CommRequest;
 import com.micro.common.web.vo.CommResponse;
 import com.micro.www.api.ISystemInfoService;
@@ -19,9 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiHandleAll
 public class SysInfoController {
 
-    @DubboReference
+    @DubboReference(timeout = 10000)
     ISystemInfoService iSystemInfoService;
 
+    @ApiLogHandler
     @RequestMapping(value = "/sys_info", method = RequestMethod.POST)
     public CommResponse getSysInfo (CommRequest request) {
         return iSystemInfoService.getSystemInfo(request);

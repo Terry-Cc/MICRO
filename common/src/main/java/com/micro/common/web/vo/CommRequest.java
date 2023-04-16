@@ -19,6 +19,9 @@ public class CommRequest implements Serializable {
 
     private static final long serialVersionUID = 6209282202107265815L;
 
-    @ApiModelProperty(value = "测试入参ID")
-    private String id;
+    @ApiModelProperty(value = "测试入参用户ID")
+    private String userId;
+
+    @ApiModelProperty(value = "测试入参用户名")
+    private String userName;
 }

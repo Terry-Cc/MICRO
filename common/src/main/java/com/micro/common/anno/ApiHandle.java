@@ -18,5 +18,5 @@ public @interface ApiHandle {
      * @description 接口访问等级限制
      * @create: 2021/9/26
      */
-    String level() default Constants.LOG_LEVEL_LOW;
+    String level() default Constants.API_LEVEL_LOW;
 }

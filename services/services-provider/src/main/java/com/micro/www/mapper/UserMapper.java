@@ -14,9 +14,8 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    //@Select("select * from t_user_define where user_id = #{userId}")
     User selectById(String userId);
 
-    //List<User> listUser(String userName);
-    User listUser(String userName);
+    @Select("select * from t_user where user_name like CONCAT('%', #{userName}, '%')")
+    List<User> listUser(String userName);
 }

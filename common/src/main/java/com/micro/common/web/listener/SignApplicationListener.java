@@ -18,6 +18,9 @@ public class SignApplicationListener implements ApplicationListener<SignEvent> {
 
     @Override
     public void onApplicationEvent(SignEvent signEvent) {
+        if (null == signEvent.getUser()) {
+            return;
+        }
         logger.info("用户 {} 已登录,访问次数 {} 次", signEvent.getUser().getUserName(), signEvent.getUser().getVisitTime());
     }
 }

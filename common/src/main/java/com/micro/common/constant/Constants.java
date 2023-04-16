@@ -65,13 +65,25 @@ public final class Constants implements Serializable {
      * 接口访问等级限制 1 最低
      * @create: 2021/9/26
      */
-    public final static String LOG_LEVEL_LOW = "1";
+    public final static String API_LEVEL_LOW = "1";
 
     /**
      * 接口访问等级限制 100 最高
      * @create: 2021/9/26
      */
-    public final static String LOG_LEVEL_HIG = "100";
+    public final static String API_LEVEL_HIG = "100";
+
+    /**
+     * 接口日志捕获模式: 普通
+     * @create: 2023/04/16
+     */
+    public final static String API_LOG_MODEL_NORMAL = "1";
+
+    /**
+     * 接口日志捕获模式: 详细
+     * @create: 2023/04/16
+     */
+    public final static String API_LOG_MODEL_DETAIL = "2";
 
     /**
      * 日期格式 yyyy-MM-dd

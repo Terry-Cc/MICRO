@@ -54,19 +54,19 @@ public class SystemInfoServiceImpl implements ISystemInfoService {
     @Override
     public CommResponse getSystemInfo(CommRequest request) throws BusinessException {
         CommResponse response = new CommResponse();
-        if (Constants.STR_TWO.equals(request.getId())) {
+        if (Constants.STR_TWO.equals(request.getUserId())) {
             throw new BusinessException("TEST");
         }
         try {
             logger.info("auto size :{}", contextList.size());
             logger.info("mappers set : {} ", properties.getConfiguration().getMappedStatementNames().toString());
-            User listUser = userMapper.listUser("admin");
+            List<User> userList = userMapper.listUser(request.getUserName());
             Map<String, Object> data = new HashMap<>();
             data.put("snowId", idGenerator.generateId());
             data.put("systemItem", SystemUtils.getComMsg());
             response.setResult(ResultEnum.COMMON_SUCCESS_RESP).setData(data);
             // 通知监听器
-            User user = userMapper.selectById(request.getId());
+            User user = userMapper.selectById(request.getUserId());
             context.publishEvent(new SignEvent(context, user));
             // 模拟 CgLib 动态代理
             Class<SystemInfoServiceImpl> clazz = SystemInfoServiceImpl.class;

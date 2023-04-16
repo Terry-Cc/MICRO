@@ -21,5 +21,5 @@ public @interface ApiHandleAll {
      * @create: 2021/9/26
      */
     @AliasFor(annotation = ApiHandle.class)
-    String level() default Constants.LOG_LEVEL_LOW;
+    String level() default Constants.API_LEVEL_LOW;
 }

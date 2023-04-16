@@ -21,9 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("unused")
 public class DefaultNoteFactory implements IStaticFactory<NoteBase> {
 
-    protected static Logger logger = LoggerFactory.getLogger(DefaultNoteFactory.class);
+    private static Logger logger = LoggerFactory.getLogger(DefaultNoteFactory.class);
 
-    private final static String DEFAULT_NOTE_PATH = "\\noteHome\\";
+    private final static String DEFAULT_NOTE_PATH = "\\data\\noteHome\\";
 
     private final static String DEFAULT_NOTE_SUF = ".ntc";
     

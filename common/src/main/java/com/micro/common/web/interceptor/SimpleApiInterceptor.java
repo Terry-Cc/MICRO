@@ -13,6 +13,9 @@ import java.lang.reflect.AnnotatedElement;
 /**
  * @author XiongJiaMin
  * @apiNote 接口拦截器
+ * <p>
+ *     可以处理请求参数，响应，日志捕获等
+ * </p>
  * @since 2022-09-08 11:13
  **/
 public class SimpleApiInterceptor implements MethodInterceptor {
