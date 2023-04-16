@@ -1,4 +1,4 @@
-# <img src="D:\COMPUTERAPP\JAVA\Project\MICRO\e70381b4-2db5-457e-918f-17ff18fca207.svg" style="zoom:80%;" />
+# <img url="https://raw.githubusercontent.com/Terry-Cc/MICRO/73dc5168edc4441f62265af9f1b4931605939d88/data/image/e70381b4-2db5-457e-918f-17ff18fca207.svg" style="zoom:80%;" />
 
 # Micro:	*T*erry‘s *C*omprehensive *T*raining *P*rogram *D*emo
 
