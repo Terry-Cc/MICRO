@@ -43,7 +43,7 @@ dubbo:
     port: 20900
   scan:
     # dubbo 扫描包
-    base-packages: com.micro.www.service
+    base-packages: com.micro.services.provider.service
   cloud:
     # 需要订阅的服务名
     subscribed-services: /

@@ -88,6 +88,11 @@
             <groupId>com.aventrix.jnanoid</groupId>
             <artifactId>jnanoid</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
     <build>

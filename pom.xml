@@ -45,7 +45,7 @@
         <alibaba.fastjson.version>1.2.70</alibaba.fastjson.version>
         <hikari.version>3.4.5</hikari.version>
         <pgp.version>1.60</pgp.version>
-        <mysql.version>8.0.21</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <mybatis.version>2.2.1</mybatis.version>
         <druid.version>1.2.10</druid.version>
         <javafx.version>2.1.6</javafx.version>
@@ -53,6 +53,7 @@
         <javafx.pkg.version>8.8.3</javafx.pkg.version>
         <ikanalyzer.version>2012_u6</ikanalyzer.version>
         <jnanoid.version>2.0.0</jnanoid.version>
+        <reports-plugin.version>3.0.0</reports-plugin.version>
     </properties>
 
     <dependencies>
@@ -148,7 +149,7 @@
                 <artifactId>snakeyaml</artifactId>
                 <version>${yaml.version}</version>
             </dependency>
-            <!-- services-api -->
+            <!-- services -->
             <dependency>
                 <groupId>com.micro</groupId>
                 <artifactId>services-api</artifactId>
@@ -313,6 +314,12 @@
                 <groupId>com.aventrix.jnanoid</groupId>
                 <artifactId>jnanoid</artifactId>
                 <version>${jnanoid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${reports-plugin.version}</version>
+                <type>maven-plugin</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

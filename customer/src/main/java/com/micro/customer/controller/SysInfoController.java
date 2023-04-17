@@ -4,7 +4,7 @@ import com.micro.common.anno.ApiHandleAll;
 import com.micro.common.anno.ApiLogHandler;
 import com.micro.common.web.vo.CommRequest;
 import com.micro.common.web.vo.CommResponse;
-import com.micro.www.api.ISystemInfoService;
+import com.micro.services.api.ISystemInfoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
