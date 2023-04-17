@@ -1,5 +1,6 @@
 package com.micro.services.provider.service;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.micro.common.constant.Constants;
 import com.micro.common.entity.User;
 import com.micro.common.enums.ResultEnum;
@@ -49,7 +50,7 @@ public class SystemInfoServiceImpl implements ISystemInfoService {
     public MybatisProperties properties;
 
     @Resource
-    public List<ApplicationContext> contextList;
+    public DruidDataSource druidDataSource;
 
     @Override
     public CommResponse getSystemInfo(CommRequest request) throws BusinessException {
@@ -58,12 +59,12 @@ public class SystemInfoServiceImpl implements ISystemInfoService {
             throw new BusinessException("TEST");
         }
         try {
-            logger.info("auto size :{}", contextList.size());
-            logger.info("mappers set : {} ", properties.getConfiguration().getMappedStatementNames().toString());
             List<User> userList = userMapper.listUser(request.getUserName());
             Map<String, Object> data = new HashMap<>();
             data.put("snowId", idGenerator.generateId());
             data.put("systemItem", SystemUtils.getComMsg());
+            data.put("mappers", properties.getConfiguration().getMappedStatementNames().toString());
+            data.put("datasourceProperties", druidDataSource.toString());
             response.setResult(ResultEnum.COMMON_SUCCESS_RESP).setData(data);
             // 通知监听器
             User user = userMapper.selectById(request.getUserId());

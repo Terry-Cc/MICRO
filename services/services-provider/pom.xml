@@ -62,9 +62,13 @@
 <!--            <groupId>com.zaxxer</groupId>-->
 <!--            <artifactId>HikariCP</artifactId>-->
 <!--        </dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
+            <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
