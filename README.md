@@ -24,9 +24,15 @@ This is just a DEMO to record the technologies and key points learned throughout
 
 ## Quick Start
 
-下载以查看，编辑和优化，如果有大佬提意见我会非常感谢。
+下载以查看，编辑和优化，如果有大佬提意见我会非常感谢。其中services model，customer model，gateway model启动需要同时启动一个本地Nacos服务，Nacos数据库连接配置见下：
 
-Download to view, edit, and optimize. I would greatly appreciate any feedback from the big shots.
+Download to view, edit, and optimize. I would greatly appreciate any feedback from the big shots.The startup of the services model, customer model, and gateway model requires simultaneously starting a local Nacos service. The Nacos database connection configuration is shown below:
+```
+### Connect URL of DB:
+# db.url.0=jdbc:mysql://rm-cn-uqm36bzf000170ro.rwlb.cn-chengdu.rds.aliyuncs.com:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+# db.user.0=terry_viva
+# db.password.0=Terry@123
+```
 
 
 
