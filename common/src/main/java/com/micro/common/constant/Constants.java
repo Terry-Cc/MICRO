@@ -86,18 +86,6 @@ public final class Constants implements Serializable {
     public final static String API_LOG_MODEL_DETAIL = "2";
 
     /**
-     * 日期格式 yyyy-MM-dd
-     * @create: 2021/11/25
-     */
-    public final static String SPECIFIC_DATE = "yyyy-MM-dd";
-
-    /**
-     * 日期格式精确 yyyy-MM-dd HH:mm:ss
-     * @create: 2021/11/25
-     */
-    public final static String EXACT_DATE = "yyyy-MM-dd HH:mm:ss";
-
-    /**
      * 异常主体 expMain
      * @create: 2021/11/25
      */

@@ -34,22 +34,59 @@ public final class NanoIdGenerator {
         return NanoIdUtils.randomNanoId();
     }
 
+    /**
+     * @since 2023/4/17 22:57
+     * @description <p>
+     *  生成默认21位的随机ID，模板为：大小写字母，数字，特殊字符
+     * </p>
+     */
     public static String randomNanoId() {
         return randomNanoId(DEFAULT_NUMBER_GENERATOR, DEFAULT_ALPHABET.toCharArray(), DEFAULT_SIZE);
     }
 
+    /**
+     * @since 2023/4/17 22:57
+     * @description <p>
+     *  生成指定位数的随机ID，模板为：大小写字母，数字，特殊字符
+     * </p>
+     */
     public static String randomNanoId(int length) {
         return randomNanoId(DEFAULT_NUMBER_GENERATOR, DEFAULT_ALPHABET.toCharArray(), length);
     }
 
+    /**
+     * @since 2023/4/17 22:57
+     * @description <p>
+     *  生成指默认21位的随机ID，模板自定义
+     * </p>
+     */
     public static String randomNanoId(String... alphabets) {
         return randomNanoId(DEFAULT_NUMBER_GENERATOR, String.join(EMPTY, alphabets).toCharArray(), DEFAULT_SIZE);
     }
 
+    /**
+     * @since 2023/4/17 22:57
+     * @description <p>
+     *  生成指指定位数的随机ID，模板自定义
+     * </p>
+     */
     public static String randomNanoId(int length, String... alphabets) {
         return randomNanoId(DEFAULT_NUMBER_GENERATOR, String.join(EMPTY, alphabets).toCharArray(), length);
     }
 
+    /**
+     * @since 2023/4/17 22:56
+     * @description <p>
+     *  nanoId 生成模板方法,默认提供了四种实现：
+     *  {@link #randomNanoId()}
+     *  {@link #randomNanoId(int)}
+     *  {@link #randomNanoId(String...)}
+     *  {@link #randomNanoId(int, String...)}
+     * </p>
+     * @param alphabet 模板，默认为：{@link #DEFAULT_ALPHABET}
+     * @param random 随机策略，默认为: {@link #DEFAULT_NUMBER_GENERATOR}
+     * @param size ID生成时的长度，默认为： {@link #DEFAULT_SIZE}
+     */
     public static String randomNanoId(final Random random, final char[] alphabet, final int size) {
         if (random == null) {
             throw new IllegalArgumentException("random cannot be null.");

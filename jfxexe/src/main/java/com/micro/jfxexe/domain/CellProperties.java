@@ -12,6 +12,12 @@ public class CellProperties implements Serializable {
 
     private static final long serialVersionUID = 9165627757424981460L;
 
+    /**
+     * @since 2023/4/18 16:44
+     * @description <p>
+     *  笔记列表
+     * </p>
+     */
     public Note note;
 
     public Note getNote() {

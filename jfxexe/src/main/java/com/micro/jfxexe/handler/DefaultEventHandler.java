@@ -18,6 +18,13 @@ public abstract class DefaultEventHandler implements EventHandler<FXMLNEvent>, I
 
     public DefaultEventHandler() {}
 
+    /**
+     * @since 2023/4/18 16:58
+     * @description <p>
+     *  默认的事件处理器,核心处理方法
+     * </p>
+     * @param event 处理的事件
+     */
     @Override
     public abstract void handle(FXMLNEvent event);
 }

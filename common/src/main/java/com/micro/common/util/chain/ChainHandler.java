@@ -14,10 +14,20 @@ public abstract class ChainHandler {
 
     private ChainHandler nextHandler;
 
-    // 优先级
+    /**
+     * @since 2023/4/17 22:51
+     * @description <p>
+     *  优先级
+     * </p>
+     */
     private int order;
 
-    // 责任链名称
+    /**
+     * @since 2023/4/17 22:51
+     * @description <p>
+     *  责任链名称
+     * </p>
+     */
     private String chainName;
 
     public String getChainName() {
@@ -64,5 +74,9 @@ public abstract class ChainHandler {
         }
     }
 
+    /**
+     * 责任链处理的内容
+     * @param chainParam 责任链传递的参数
+     */
     public abstract void handler (ChainParam chainParam);
 }

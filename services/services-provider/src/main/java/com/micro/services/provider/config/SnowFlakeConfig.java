@@ -1,8 +1,8 @@
 package com.micro.services.provider.config;
 
-import com.micro.common.constant.Constants;
+import com.micro.common.constant.DateTimePattern;
 import com.micro.common.util.idutils.SnowFlakeIdGenerator;
-import com.micro.common.util.other.CommonUtils;
+import com.micro.common.util.other.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +27,6 @@ public class SnowFlakeConfig {
 
     @Bean
     public SnowFlakeIdGenerator build() {
-        return SnowFlakeIdGenerator.build(workId, dataCenterId, CommonUtils.parseTimeStamp(startDate, Constants.EXACT_DATE));
+        return SnowFlakeIdGenerator.build(workId, dataCenterId, DateTimeUtils.parseDate(startDate, DateTimePattern.YYYY_MM_DD_HH_MM_SS).getTime());
     }
 }

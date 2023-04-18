@@ -1,9 +1,5 @@
 package com.micro.common.util.sort;
 
-import com.alibaba.fastjson.JSON;
-import com.micro.common.entity.User;
-
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +9,7 @@ import java.util.List;
  **/
 public final class BubbleSort<E extends Comparable<E>> implements SortAlgorithm<E> {
 
-    public static <E extends Comparable<E>> BubbleSort<E> INSTANCE () {
+    static <E extends Comparable<E>> BubbleSort<E> instance() {
         return new BubbleSort<>();
     }
 

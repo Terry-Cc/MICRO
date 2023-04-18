@@ -19,7 +19,7 @@ import java.io.Serializable;
  *     加起来刚好64位, 整体以时间自增, 分布式系统可使用机器ID区分, 效率高
  * </p>
  **/
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public class SnowFlakeIdGenerator implements Serializable {
 
     private static final long serialVersionUID = -1946084153633050532L;
@@ -34,13 +34,13 @@ public class SnowFlakeIdGenerator implements Serializable {
      * @description 机器ID占用位数
      * @create: 2021/11/26
      */
-    private final static long workIdBit = 5L;
+    private final static long WORK_ID_BIT = 5L;
 
     /**
      * @description 机器ID最大值
      * @create: 2021/11/25
      */
-    private final static long workIdMax = -1L ^ (-1L << workIdBit);
+    private final static long WORK_ID_MAX = ~(-1L << WORK_ID_BIT);
 
     /**
      * @description 数据标识ID
@@ -52,13 +52,13 @@ public class SnowFlakeIdGenerator implements Serializable {
      * @description 数据标识ID占用位数
      * @create: 2021/11/26
      */
-    private final static long dataCenterIdBit = 5L;
+    private final static long DATA_CENTER_ID_BIT = 5L;
 
     /**
      * @description 数据标识ID最大值
      * @create: 2021/11/25
      */
-    private final static long dataCenterIdMax = -1L ^ (-1L << dataCenterIdBit);
+    private final static long DATA_CENTER_ID_MAX = ~(-1L << DATA_CENTER_ID_BIT);
 
     /**
      * @description 上一个时间戳
@@ -82,31 +82,31 @@ public class SnowFlakeIdGenerator implements Serializable {
      * @description 毫秒序列占用位数
      * @create: 2021/11/26
      */
-    private final static long sequenceBit = 12L;
+    private final static long SEQUENCE_BIT = 12L;
 
     /**
      * @description 毫秒序列使用掩码
      * @create: 2021/11/25
      */
-    private final static long sequenceMask = -1L ^ (-1L << sequenceBit);
+    private final static long SEQUENCE_MASK = ~(-1L << SEQUENCE_BIT);
 
     /**
      * @description 机器ID移位数
      * @create: 2021/11/26
      */
-    private final static long workIdShift = sequenceBit;
+    private final static long WORK_ID_SHIFT = SEQUENCE_BIT;
 
     /**
      * @description 数据ID移位数
      * @create: 2021/11/26
      */
-    private final static long dataCenterIdShift = workIdBit + sequenceBit;
+    private final static long DATA_CENTER_ID_SHIFT = WORK_ID_BIT + SEQUENCE_BIT;
 
     /**
      * @description 时间戳移位数
      * @create: 2021/11/26
      */
-    private final static long timeStampShift = dataCenterIdShift + dataCenterIdBit;
+    private final static long TIME_STAMP_SHIFT = DATA_CENTER_ID_SHIFT + DATA_CENTER_ID_BIT;
 
     /**
      * <p>
@@ -148,7 +148,7 @@ public class SnowFlakeIdGenerator implements Serializable {
      * <p>
      *     设置起始日期
      * </p>
-     * @param startDate 起始日期
+     * @param startTimeStamp 起始日期
      * @return SnowFlakeIdUtil
      */
     private SnowFlakeIdGenerator setStartTimeStamp (long startTimeStamp) {
@@ -161,17 +161,17 @@ public class SnowFlakeIdGenerator implements Serializable {
     /**
      * <p>
      *     私有全参构造, 有校验
-     *     @throws InspectedParameterException
+     *     @throws InspectedParameterException 参数校验异常
      * </p>
      * @param workId 机器ID
      * @param dataCenterId 数据标识ID
      */
     private SnowFlakeIdGenerator(long workId, long dataCenterId, long startTimeStamp) {
-        if (workId > workIdMax || workId < 0L) {
-            throw new InspectedParameterException(CommonUtils.formatStr("WorkId can't be greater than %d or less than 0", String.valueOf(workIdMax)));
+        if (workId > WORK_ID_MAX || workId < 0L) {
+            throw new InspectedParameterException(CommonUtils.formatStr("WorkId can't be greater than %d or less than 0", String.valueOf(WORK_ID_MAX)));
         }
-        if (dataCenterId > dataCenterIdMax || dataCenterId < 0L) {
-            throw new InspectedParameterException(CommonUtils.formatStr("DataCenterId can't be greater than %d or less than 0", String.valueOf(dataCenterIdMax)));
+        if (dataCenterId > DATA_CENTER_ID_MAX || dataCenterId < 0L) {
+            throw new InspectedParameterException(CommonUtils.formatStr("DataCenterId can't be greater than %d or less than 0", String.valueOf(DATA_CENTER_ID_MAX)));
         }
         if (CommonUtils.isEmpty(startTimeStamp) || startTimeStamp < 0L) {
             throw new InspectedParameterException("StartTimeStamp can't be empty or less than 0");
@@ -209,7 +209,7 @@ public class SnowFlakeIdGenerator implements Serializable {
      *     ID生成
      * </p>
      * @return ID long
-     * @throws InspectedParameterException
+     * @throws InspectedParameterException 参数校验异常
      */
     public synchronized long generateId () {
         long nextMilli = timeGenerate();
@@ -217,7 +217,7 @@ public class SnowFlakeIdGenerator implements Serializable {
             throw new InspectedParameterException("The system clock was fallback ! Please check !");
         }
         if (nextMilli == lastMilli) {
-            sequence = (sequence + 1L) & sequenceMask;
+            sequence = (sequence + 1L) & SEQUENCE_MASK;
             if (sequence == 0L) {
                 nextMilli = blockNextMilli(lastMilli);
             }
@@ -225,9 +225,9 @@ public class SnowFlakeIdGenerator implements Serializable {
             sequence = 0L;
         }
         lastMilli = nextMilli;
-        return ((nextMilli - startTimeStamp) << timeStampShift)
-                | (dataCenterId << dataCenterIdShift)
-                | (workId << workIdShift)
+        return ((nextMilli - startTimeStamp) << TIME_STAMP_SHIFT)
+                | (dataCenterId << DATA_CENTER_ID_SHIFT)
+                | (workId << WORK_ID_SHIFT)
                 | sequence;
     }
 }

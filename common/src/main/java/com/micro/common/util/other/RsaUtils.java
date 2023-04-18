@@ -18,7 +18,8 @@ import java.util.*;
  * @author: XiongJiaMin
  * @create: 2022-06-29 15:00
  **/
-public class RSAUtils {
+@SuppressWarnings("unused")
+public class RsaUtils {
 
     public static final String RSA_CHARSET = "UTF-8";
     
@@ -195,9 +196,9 @@ public class RSAUtils {
      */
     public static String sign(String content, String privateKey) {
         try {
-            PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64.getMimeDecoder().decode(privateKey));
+            PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.getMimeDecoder().decode(privateKey));
             KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGORITHM);
-            PrivateKey priKey = keyFactory.generatePrivate(priPKCS8);
+            PrivateKey priKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
             Signature signature = Signature.getInstance(RSA_SIGNATURE);
             signature.initSign(priKey);
             signature.update(content.getBytes(RSA_CHARSET));

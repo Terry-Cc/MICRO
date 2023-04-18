@@ -22,9 +22,10 @@ import java.util.Objects;
  * @author: XiongJiaMin
  * @create: 2022-06-29 09:30
  **/
-public class PGPUtils {
+@SuppressWarnings("unused")
+public class PgpUtils {
 
-    protected static Logger logger = LoggerFactory.getLogger(PGPUtils.class);
+    protected static Logger logger = LoggerFactory.getLogger(PgpUtils.class);
 
     static{
         try{
@@ -48,10 +49,10 @@ public class PGPUtils {
             String publicKeyPath,
             boolean armor,
             boolean withIntegrityCheck) throws IOException, PGPException {
-        OutputStream out = new BufferedOutputStream(new FileOutputStream(encryptFileOutPath));
-        PGPPublicKey encKey = readPublicKey(publicKeyPath);
-        encryptFile(out, encryptFileInPath, encKey, armor, withIntegrityCheck);
-        out.close();
+        try (OutputStream out = new BufferedOutputStream(new FileOutputStream(encryptFileOutPath))) {
+            PGPPublicKey encKey = readPublicKey(publicKeyPath);
+            encryptFile(out, encryptFileInPath, encKey, armor, withIntegrityCheck);
+        }
     }
 
     /**
@@ -69,13 +70,11 @@ public class PGPUtils {
             String privateKeyPath,
             String privateKeyPwdPath,
             String outPutFilePath) throws IOException, PGPException {
-        InputStream in = new BufferedInputStream(new FileInputStream(decryptFileInPath));
-        InputStream keyIn = new BufferedInputStream(new FileInputStream(privateKeyPath));
-        char[] privateKeyPwd = Objects.requireNonNull(FileUtils.readFile(privateKeyPwdPath)).toCharArray();
-        String outPath = decryptFile(in, keyIn, privateKeyPwd, outPutFilePath);
-        keyIn.close();
-        in.close();
-        return outPath;
+        try (InputStream in = new BufferedInputStream(new FileInputStream(decryptFileInPath));
+             InputStream keyIn = new BufferedInputStream(new FileInputStream(privateKeyPath))) {
+            char[] privateKeyPwd = Objects.requireNonNull(FileUtils.readFile(privateKeyPwdPath)).toCharArray();
+            return decryptFile(in, keyIn, privateKeyPwd, outPutFilePath);
+        }
     }
 
     /**

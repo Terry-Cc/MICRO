@@ -13,8 +13,20 @@ public class NoteBase implements Serializable {
 
     private static final long serialVersionUID = 5005060712083821412L;
 
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  创建时间
+     * </p>
+     */
     private LocalDateTime createdDate;
-    
+
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  更新时间
+     * </p>
+     */
     private LocalDateTime updatedDate;
 
     public NoteBase() {}

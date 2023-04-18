@@ -19,7 +19,12 @@ public class NoteLabel extends NoteBase {
 
     private Integer searchTime;
 
-    // 是否查询文本
+    /**
+     * @since 2023/4/18 16:44
+     * @description <p>
+     *  是否查询文本
+     * </p>
+     */
     private boolean isSearchText;
 
     public boolean isSearchText() {

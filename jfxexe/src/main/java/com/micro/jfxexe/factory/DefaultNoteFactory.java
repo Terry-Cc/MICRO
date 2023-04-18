@@ -33,14 +33,44 @@ public class DefaultNoteFactory implements IStaticFactory<NoteBase> {
 
     private final static Map<String, NoteLabel> NOTE_LABEL_CACHE = new ConcurrentHashMap<>(16);
 
+    /**
+     * @since 2023/4/18 16:49
+     * @description <p>
+     *  笔记标签列表
+     * </p>
+     */
     private Map<String, NoteCollection> noteCollectionMap;
 
+    /**
+     * @since 2023/4/18 16:49
+     * @description <p>
+     *  关系映射
+     * </p>
+     */
     private NoteRelationship noteRelationship;
 
+    /**
+     * @since 2023/4/18 16:50
+     * @description <p>
+     *  笔记存储路径
+     * </p>
+     */
     private String notePath;
 
+    /**
+     * @since 2023/4/18 16:50
+     * @description <p>
+     *  是否开启同步
+     * </p>
+     */
     private boolean isSync;
 
+    /**
+     * @since 2023/4/18 16:50
+     * @description <p>
+     *  是否使用缓存
+     * </p>
+     */
     private boolean isCache;
 
     private DefaultNoteFactory () {

@@ -13,8 +13,20 @@ public class NoteCollection extends NoteBase {
 
     private static final long serialVersionUID = 9133464110578051991L;
 
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  所有笔记
+     * </p>
+     */
     private Map<String, Note> notes;
 
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  所有标签
+     * </p>
+     */
     private Map<String, NoteLabel> noteLabels;
 
     public NoteCollection () {}

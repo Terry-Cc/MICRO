@@ -1,15 +1,11 @@
 package com.micro.common.util.other;
 
-import com.alibaba.fastjson.JSON;
 import com.micro.common.exception.BusinessException;
-import com.micro.common.exception.DataParseException;
 import com.micro.common.interfaces.Function;
 import com.micro.common.interfaces.FunctionEmpty;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -22,8 +18,6 @@ import java.util.*;
 public class CommonUtils implements Serializable {
 
     private static final long serialVersionUID = 2062570375066533650L;
-
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat();
 
     /**
      * <p>
@@ -59,8 +53,8 @@ public class CommonUtils implements Serializable {
      */
     public static boolean isEmpty (Object o) {
         if (null != o) {
-            if (o instanceof String) {
-                return ((String) o).length() == 0;
+            if (o instanceof CharSequence) {
+                return ((CharSequence) o).length() == 0;
             } else if (o instanceof Iterable) {
                 return isEmpty((Iterable<?>)o);
             } else if (o instanceof Map<?, ?>) {
@@ -158,80 +152,6 @@ public class CommonUtils implements Serializable {
 
     /**
      * <p>
-     *     日期字符串转换长整型
-     *     @throws DataParseException 数据转换异常
-     * </p>
-     * @param dateStr 日期字符串
-     * @param pattern 日期模板
-     * @return long
-     */
-    public static long parseTimeStamp (String dateStr, String pattern) {
-        try {
-            if (isParamsEmpty(dateStr, pattern)) {
-                throw new DataParseException("The parameters of the method 'parseTimeStamp' must not be empty !");
-            }
-            dateFormat.applyPattern(pattern);
-            return dateFormat.parse(dateStr).getTime();
-        } catch (ParseException e) {
-            throw new DataParseException(e, ("The dateStr " + dateStr + " does not match pattern " + pattern));
-        }
-    }
-
-    /**
-     * <p>
-     *     @see Date 日期字符串转换日期
-     *     @throws DataParseException 数据转换异常
-     * </p>
-     * @param dateStr 日期字符串
-     * @param pattern 日期模板
-     * @return date
-     */
-    public static Date parseTimeDate (String dateStr, String pattern) {
-        try {
-            if (isParamsEmpty(dateStr, pattern)) {
-                throw new DataParseException("The parameters of the method 'parseTimeDate' must not be empty !");
-            }
-            dateFormat.applyPattern(pattern);
-            return dateFormat.parse(dateStr);
-        } catch (ParseException e) {
-            throw new DataParseException(e, ("The dateStr " + dateStr + " does not match pattern " + pattern));
-        }
-    }
-
-    /**
-     * <p>
-     *     时间戳转换日期字符串
-     * </p>
-     * @param timeStamp 时间戳
-     * @param pattern 日期模板
-     * @return 日期字符串
-     */
-    public static String parseTimeStr (long timeStamp, String pattern) {
-        if (isParamsEmpty(timeStamp, pattern)) {
-            throw new DataParseException("The parameters of the method 'parseTimeStr' must not be empty !");
-        }
-        dateFormat.applyPattern(pattern);
-        return dateFormat.format(new Date(timeStamp));
-    }
-
-    /**
-     * <p>
-     *     @see Date 日期戳转换日期字符串
-     * </p>
-     * @param date 日期
-     * @param pattern 日期模板
-     * @return 日期字符串
-     */
-    public static String parseTimeStr (Date date, String pattern) {
-        if (isParamsEmpty(date, pattern)) {
-            throw new DataParseException("The parameters of the method 'parseTimeStr' must not be empty !");
-        }
-        dateFormat.applyPattern(pattern);
-        return dateFormat.format(date);
-    }
-
-    /**
-     * <p>
      *     多参检查空值
      *     一个参数为空即 false
      * </p>
@@ -291,38 +211,6 @@ public class CommonUtils implements Serializable {
                     throw new BusinessException(e, "流关闭异常:");
                 }
             }
-        }
-    }
-
-    public static void insertSort(int[] data) {
-        int temp, j;
-        for (int i = 0; i < data.length; i++) {
-            temp = data[i];
-            //从右向左在有序区data[0 ... i-1]中找 data[i] 的插入位置
-            j = i - 1;
-            while (j >= 0 && temp < data[j]) {
-                //将小于data[j]的元素后移
-                data[j + 1] = data[j];
-                j--;
-            }
-            //在 j+1 处插入 data[i]
-            data[j + 1] = temp;
-        }
-    }
-
-    public static void sort(int[] data) {
-        int temp, j;
-        for (int i = 0; i < data.length; i++) {
-            temp = data[i];
-            //从右向左在有序区data[0 ... i-1]中找 data[i] 的插入位置
-            j = i - 1;
-            while (j >= 0 && temp > data[j]) {
-                //将大于data[j]的元素后移
-                data[j + 1] = data[j];
-                j--;
-            }
-            //在 j+1 处插入 data[i]
-            data[j + 1] = temp;
         }
     }
 }

@@ -9,8 +9,20 @@ import javafx.scene.control.Label;
  **/
 public class LabelF extends Label {
 
+    /**
+     * @since 2023/4/18 16:44
+     * @description <p>
+     *  标签ID
+     * </p>
+     */
     private String labelId;
 
+    /**
+     * @since 2023/4/18 16:44
+     * @description <p>
+     *  标签名
+     * </p>
+     */
     private String labelName;
 
     public String getLabelId() {

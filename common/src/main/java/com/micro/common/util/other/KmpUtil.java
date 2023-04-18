@@ -7,7 +7,7 @@ import java.util.Vector;
  * @apiNote KMP 算法
  * @since 2022-12-02 17:11
  **/
-public class KMPUtil {
+public class KmpUtil {
 
     /**
      * 获取匹配字符串在指定字符串中的位置
@@ -20,7 +20,7 @@ public class KMPUtil {
         int mapIndex = 0;
         char[] tarArr = tarStr.toCharArray();
         char[] mapArr = mapStr.toCharArray();
-        Vector<Integer> pmt = genPMT(mapStr);
+        Vector<Integer> pmt = genPmt(mapStr);
         while (tarIndex < tarStr.length()) {
             if (tarArr[tarIndex] == mapArr[mapIndex]) {
                 tarIndex++;
@@ -43,9 +43,9 @@ public class KMPUtil {
      * @param p 字符串
      * @return PMT 序列
      */
-    private static Vector<Integer> genPMT(String p) {
-        Vector<Integer> PMT = new Vector<>(p.length());
-        PMT.addElement(0);
+    private static Vector<Integer> genPmt(String p) {
+        Vector<Integer> pmt = new Vector<>(p.length());
+        pmt.addElement(0);
         int x = 1;
         int now = 0;
         char[] pChar = p.toCharArray();
@@ -53,14 +53,14 @@ public class KMPUtil {
             if (pChar[now] == pChar[x]) {
                 x++;
                 now++;
-                PMT.addElement(now);
+                pmt.addElement(now);
             } if (now > 0) {
-                now = PMT.get(now - 1);
+                now = pmt.get(now - 1);
             } else {
-                PMT.addElement(0);
+                pmt.addElement(0);
                 x++;
             }
         }
-        return PMT;
+        return pmt;
     }
 }

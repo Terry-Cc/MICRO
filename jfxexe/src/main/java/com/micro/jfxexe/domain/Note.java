@@ -12,10 +12,28 @@ public class Note extends NoteBase {
 
     private static final long serialVersionUID = 6065013264022620248L;
 
+    /**
+     * @since 2023/4/18 16:44
+     * @description <p>
+     *  笔记ID
+     * </p>
+     */
     private String noteId;
 
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  笔记数据
+     * </p>
+     */
     private String noteText;
 
+    /**
+     * @since 2023/4/18 16:45
+     * @description <p>
+     *  查询次数
+     * </p>
+     */
     private Integer searchTime;
 
     public void addTime() {

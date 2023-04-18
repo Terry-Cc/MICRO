@@ -15,7 +15,6 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @program: micro
@@ -23,6 +22,7 @@ import java.util.Objects;
  * @author: XiongJiaMin
  * @create: 2022-07-01 17:22
  **/
+@SuppressWarnings("unused")
 public class FileUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
@@ -33,6 +33,8 @@ public class FileUtils {
 
     public static final String CSV_DEFAULT_CHARSET = "UTF-8";
 
+    public static final String CSV_DEFAULT_SUFFIX = ".csv";
+
     public static final String NEWLINE_CHARACTER = "\r\n";
 
     public static final String EMPTY = "";
@@ -40,32 +42,7 @@ public class FileUtils {
     /**
      * 读文件
      * @param filePath 文件全路径
-     * @return 文件内容 #String
-     */
-    public static String readFiles(String filePath) throws RuntimeException, IOException {
-        StringBuilder sb = new StringBuilder();
-        Reader reader = null;
-        try {
-            File file = new File(filePath);
-            reader = new InputStreamReader(new FileInputStream(file));
-            int ch;
-            while ((ch = Objects.requireNonNull(reader).read()) != -1) {
-                sb.append((char) ch);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("文件读取失败:", e);
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return sb.toString();
-    }
-
-    /**
-     * 读文件
-     * @param filePath 文件全路径
-     * @return 文件内容 #String
+     * @return 文件内容 {@link String}
      */
     public static String readFile(String filePath) {
         String readStr = null;
@@ -148,15 +125,21 @@ public class FileUtils {
             for (File file : files) {
                 if (file.isFile()) {
                     flag = deleteFile(file.getAbsolutePath());
-                    if (!flag) break;
+                    if (!flag) {
+                        break;
+                    }
                 }
                 else {
                     flag = clearDirectory(file.getAbsolutePath());
-                    if (!flag) break;
+                    if (!flag) {
+                        break;
+                    }
                 }
             }
         }
-        if (!flag) return false;
+        if (!flag) {
+            return false;
+        }
         return dirFile.delete();
     }
 
@@ -255,10 +238,10 @@ public class FileUtils {
      * @param filePath 文件路径
      * @param separator 分隔符
      * @param charset 编码
-     * @return 数据 List<String[]>
+     * @return 数据 {@link List}
      */
     public static List<String[]> readCsv(String filePath, char separator, String charset) throws RuntimeException {
-        if (!filePath.endsWith(".csv")) {
+        if (!filePath.endsWith(CSV_DEFAULT_SUFFIX)) {
             throw new RuntimeException("读取文件格式需为.CSV结尾!");
         }
         List<String[]> strList = new ArrayList<>();

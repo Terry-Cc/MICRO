@@ -12,6 +12,7 @@ import java.util.*;
  * @apiNote clz
  * @since 2022-11-23 13:41
  **/
+@SuppressWarnings("unused")
 public abstract class ClassLocator {
 
     public static <T>T getInstance (Class<T> clz, Object... args) {
@@ -26,7 +27,7 @@ public abstract class ClassLocator {
 
     public static Map<Object, List<Annotation>> getFieldsToAnnotation (Object obj) {
         Field[] declaredFields = obj.getClass().getDeclaredFields();
-        Map<Object, List<Annotation>> fields = new HashMap<>();
+        Map<Object, List<Annotation>> fields = new HashMap<>(16);
         if (!CommonUtils.isEmpty(declaredFields)) {
             try {
                 for (Field field : declaredFields) {

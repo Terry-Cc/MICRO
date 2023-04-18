@@ -14,17 +14,52 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class SearchParam extends ChainParam {
 
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  查询的字符串
+     * </p>
+     */
     private String searchText;
 
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  查询的标签列表
+     * </p>
+     */
     private List<LabelF> labels;
 
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  排序类型
+     * </p>
+     */
     private SortType sortType;
 
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  查询的笔记列表
+     * </p>
+     */
     private List<Note> notes;
 
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  事件类型
+     * </p>
+     */
     private FXMLNEvent event;
 
-    // 未查询到笔记标志位
+    /**
+     * @since 2023/4/18 16:47
+     * @description <p>
+     *  未查询到笔记标志位
+     * </p>
+     */
     private boolean isNone;
 
     public FXMLNEvent getEvent() {

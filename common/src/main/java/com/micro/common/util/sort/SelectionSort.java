@@ -9,6 +9,10 @@ import java.util.List;
  **/
 public final class SelectionSort<E extends Comparable<E>> implements SortAlgorithm<E> {
 
+    static <E extends Comparable<E>> SelectionSort<E> instance() {
+        return new SelectionSort<>();
+    }
+
     @Override
     public void sort(List<E> sortElements) {
         //选择

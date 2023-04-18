@@ -4,7 +4,7 @@ import com.micro.common.anno.ChainOrder;
 import com.micro.common.util.chain.ChainHandler;
 import com.micro.common.util.chain.ChainParam;
 import com.micro.common.util.other.CommonUtils;
-import com.micro.common.util.other.KMPUtil;
+import com.micro.common.util.other.KmpUtil;
 import com.micro.jfxexe.domain.LabelF;
 import com.micro.jfxexe.domain.Note;
 import com.micro.jfxexe.domain.SearchParam;
@@ -34,7 +34,7 @@ public class TextSearchChain extends ChainHandler implements IStaticFactorySuppo
         notes = CommonUtils.isEmpty(labels) && CommonUtils.isEmpty(notes) ? noteFactory.listNote() : notes;
         logger.info(String.join(" ", "note search ----- search text:", text));
         notes = notes.stream()
-                .filter(note -> KMPUtil.kmpMapping(note.getNoteText(), text) != -1)
+                .filter(note -> KmpUtil.kmpMapping(note.getNoteText(), text) != -1)
                 .collect(Collectors.toList());
         searchParam.setNotes(notes);
     }

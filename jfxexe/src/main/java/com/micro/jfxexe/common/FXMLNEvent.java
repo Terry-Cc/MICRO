@@ -14,7 +14,12 @@ public class FXMLNEvent extends Event {
 
     public static final long serialVersionUID = 596911674194461315L;
 
-    // 是否实时搜索
+    /**
+     * @since 2023/4/18 16:42
+     * @description <p>
+     *  是否实时搜索
+     * </p>
+     */
     private boolean isActualTime;
 
     public boolean isActualTime() {
