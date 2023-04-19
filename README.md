@@ -1,4 +1,4 @@
-                        <img src="https://s2.loli.net/2023/04/17/g2fQkne17ToY6H4.png" style="zoom: 67%;" />
+<img src="https://s2.loli.net/2023/04/17/g2fQkne17ToY6H4.png" style="zoom: 67%;" />
 
 
 # Micro:	*T*erry‘s *C*omprehensive *T*raining *P*rogram *D*emo
