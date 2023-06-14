@@ -19,14 +19,12 @@ public final class SortFactory {
         integers.add(6);
         integers.add(9);
 
-        DataStream.of(integers).sort(BubbleSort.<Integer>instance()::sort);
+        DataStream.of(integers).sort(MergeSort.<Integer>instance()::sort);
 
         System.out.println(integers);
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
         bubbleSort.sort(integers);
         System.out.println(integers);
-
-
     }
 
 }
