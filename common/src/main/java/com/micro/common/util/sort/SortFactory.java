@@ -1,5 +1,7 @@
 package com.micro.common.util.sort;
 
+import com.micro.common.util.seek.BinarySeek;
+
 import java.util.ArrayList;
 
 /**
@@ -23,8 +25,10 @@ public final class SortFactory {
 
         System.out.println(integers);
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
+        BinarySeek<Integer> binarySeek = new BinarySeek<>();
         bubbleSort.sort(integers);
         System.out.println(integers);
+        System.out.println(binarySeek.seek(integers, 2));
     }
 
 }
