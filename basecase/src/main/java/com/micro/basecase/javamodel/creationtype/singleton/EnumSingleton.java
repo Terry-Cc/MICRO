@@ -1,4 +1,4 @@
-package com.micro.basecase.singleton;
+package com.micro.basecase.javamodel.creationtype.singleton;
 
 /**
  * @author Terry
