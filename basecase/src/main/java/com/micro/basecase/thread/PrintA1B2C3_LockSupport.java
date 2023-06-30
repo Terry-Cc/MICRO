@@ -1,4 +1,4 @@
-package com.micro.common.cases.thread;
+package com.micro.basecase.thread;
 
 import java.util.HashMap;
 import java.util.Map;

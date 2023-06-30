@@ -1,4 +1,4 @@
-package com.micro.common.cases.thread;
+package com.micro.basecase.thread;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Condition;

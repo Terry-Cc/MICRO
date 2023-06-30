@@ -1,4 +1,4 @@
-package com.micro.common.cases.singleton;
+package com.micro.basecase.singleton;
 
 /**
  * @author Terry

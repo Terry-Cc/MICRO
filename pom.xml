@@ -15,6 +15,7 @@
         <module>gateway</module>
         <module>xxljob</module>
         <module>jfxexe</module>
+        <module>basecase</module>
     </modules>
 
     <properties>

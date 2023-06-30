@@ -1,4 +1,4 @@
-package com.micro.common.cases.thread;
+package com.micro.basecase.thread;
 
 import lombok.SneakyThrows;
 import java.util.concurrent.*;
