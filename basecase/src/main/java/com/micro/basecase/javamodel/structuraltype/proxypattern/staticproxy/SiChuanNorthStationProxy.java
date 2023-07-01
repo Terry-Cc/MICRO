@@ -7,7 +7,7 @@ import lombok.Data;
  * @author Terry
  * @version 1.0
  * @description <p>
- *  四川东站售票代理点
+ *  四川北站售票代理点
  * </p>
  * @since 2023/7/1 14:33
  */

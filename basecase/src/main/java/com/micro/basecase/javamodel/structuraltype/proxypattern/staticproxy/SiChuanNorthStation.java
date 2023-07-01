@@ -6,7 +6,7 @@ import lombok.Data;
  * @author Terry
  * @version 1.0
  * @description <p>
- *  四川东站售票处
+ *  四川北站售票处
  * </p>
  * @since 2023/7/1 14:32
  */
@@ -23,6 +23,6 @@ public class SiChuanNorthStation implements TrainStation {
 
     @Override
     public void sellTickets() {
-        System.out.println("四川东站实收票价:" + fare + "元");
+        System.out.println("四川北站实收票价:" + fare + "元");
     }
 }
