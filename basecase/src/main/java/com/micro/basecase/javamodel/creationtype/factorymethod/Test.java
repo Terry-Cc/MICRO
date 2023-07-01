@@ -11,8 +11,8 @@ package com.micro.basecase.javamodel.creationtype.factorymethod;
 public class Test {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        Coffee cappuccino = CoffeeFactory.create(Coffee.Cappuccino.class);
-        Coffee mocha = CoffeeFactory.create(Coffee.Mocha.class);
+        Coffee cappuccino = CoffeeFactory.create(Cappuccino.class);
+        Coffee mocha = CoffeeFactory.create(Mocha.class);
         cappuccino.show();
         mocha.show();
     }

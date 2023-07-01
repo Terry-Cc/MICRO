@@ -11,7 +11,7 @@ package com.micro.basecase.javamodel.creationtype.builder;
 public class Test {
 
     public static void main(String[] args){
-        ComputerBuilder.Computer myComputer = new ComputerBuilder()
+        Computer myComputer = new ComputerBuilder()
                 .init()
                 .addMotherBoard("Extreme主板")
                 .addCpu("Inter 12900K")

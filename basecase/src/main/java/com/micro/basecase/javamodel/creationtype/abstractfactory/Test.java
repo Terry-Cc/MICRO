@@ -11,8 +11,8 @@ package com.micro.basecase.javamodel.creationtype.abstractfactory;
 public class Test {
 
     public static void main(String[] args)  {
-        Coffee caffèAmericano = new CoffeeFactory.AmericanCoffeeFactory().create();
-        Coffee espresso = new CoffeeFactory.EspressoFactory().create();
+        Coffee caffèAmericano = new AmericanCoffeeFactory().create();
+        Coffee espresso = new EspressoFactory().create();
         caffèAmericano.show();
         espresso.show();
     }
